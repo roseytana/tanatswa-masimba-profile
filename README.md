@@ -42,4 +42,4 @@ More details about the AI prompts and editing process can be found in `PROMPT_LO
 
 ## Author
 
-Tanatswa Masimba
+Tanatswa Masimba This project was created and tested as part of my Web Technologies coursework.
