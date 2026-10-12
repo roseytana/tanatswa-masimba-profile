@@ -43,3 +43,17 @@ More details about the AI prompts and editing process can be found in `PROMPT_LO
 ## Author
 
 Tanatswa Masimba This project was created and tested as part of my Web Technologies coursework.
+
+## Responsive Notes
+
+### Breakpoints Tested
+- **375px (Mobile):** Tested the layout on a mobile-sized screen. Content fits within the viewport without horizontal scrolling.
+- **768px (Tablet):** Tested the tablet layout. Portfolio projects display in two columns.
+- **1280px (Desktop):** Tested the desktop layout. Portfolio projects display in three columns.
+
+### Flexbox and Grid
+- **Flexbox:** Used in the navigation bar to align links, provide spacing, and allow wrapping on smaller screens.
+- **CSS Grid:** Used in the portfolio section to display projects in one column on mobile, two columns on tablet, and three columns on desktop.
+
+### Tailwind CSS
+Tailwind utility classes were applied to the navigation bar and contact section. Responsive utility classes, including `md:p-8`, were used to adjust the contact section's padding on medium-sized screens and above. Custom CSS handles the remaining styling and responsive portfolio layout.

@@ -9,7 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
+  <script src="https://cdn.tailwindcss.com"></script>  
+
+<style>
         
 * {
     margin: 0;
@@ -23,7 +25,8 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.7;
     color: #2d2d2d;
     background: #f5f5f5;
 }
@@ -50,7 +53,10 @@ header p {
 nav {
     background: #111111;
     padding: 1rem;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -58,10 +64,16 @@ nav {
 
 nav a {
     color: white;
-    margin: 0 1rem;
+    margin: 0;
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
+}
+
+nav a:focus-visible {
+    outline: 2px solid #e8dcc8;
+    outline-offset: 4px;
+    border-radius: 3px;
 }
 
 nav a:hover {
@@ -77,9 +89,10 @@ main {
 
 section,
 aside {
-    background: white;
+    background-color:#ffffff;
     padding: 2rem;
     margin-bottom: 2rem;
+    border: 1px solid #e5e5e5;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
@@ -90,15 +103,36 @@ h3 {
     font-family: 'Playfair Display', serif;
 }
 h2 {
-    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
     color: #202020;
+}
+p {
+    margin-bottom: 1rem;
+}
+   
+#portfolio {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    min-width: 0;
+}
+
+#portfolio article {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+#portfolio h2 {
+    grid-column: 1 / -1;
 }
 
 /* Portfolio projects */
 article {
-    background: #f0f0f0;
+    background-color: #f8f8f8;
     padding: 1.5rem;
     margin-top: 1rem;
+    border: 1px solid #e5e5e5;
     border-left: 4px solid #202020;
     border-radius: 8px;
 }
@@ -136,60 +170,83 @@ textarea {
     border-radius: 6px;
     font-family: inherit;
     font-size: 1rem;
+    background-color: #ffff;
+    color: #2d2d2d;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input:focus,
 textarea:focus {
     outline: 2px solid #555555;
+    outline-offset: 2px;
+    border-color: #202020;
+    box-shadow: 0 0 5px rgba(32, 32, 32, 0.1);
 }
 
-button {
+button{
     background: #202020;
-    color: white;
-    border: none;
+    color: #ffffff;
+    border: 1px solid #202020;
     padding: 0.8rem 1.5rem;
     border-radius: 6px;
     cursor: pointer;
+    font-family: inherit;
     font-size: 1rem;
     font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
     background: #444444;
+    border-color: #444444;
+}
+
+button:focus-visible {
+    outline: 2px solid #555555;
+    outline-offset: 3cap;
 }
 
 /* Footer */
 footer {
     background: #202020;
-    color:  #E8DCC8;
+    color:  #e8dcc8;
     text-align: center;
     padding: 1.5rem;
-    margin-top: 3rem;
-    display: block;
+    margin-top: 3rem; 
     width: 100%;
 }
 
-/* Mobile layout */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 2.2rem;
-    }
 
-    nav a {
-        display: inline-block;
-        margin: 0.4rem;
+/* Mobile-first responsive layout */
+
+/* Tablet screens and larger */
+@media (min-width: 600px) {
+    header h1 {
+        font-size: 2.8rem;
     }
 
     main {
-        margin: 2rem auto;
-        padding: 0 1rem;
+        margin: 2.5rem auto;
+        padding: 0 1.5rem;
     }
 
     section,
     aside {
-        padding: 1.5rem;
+        padding: 2rem;
+    }
+
+    #portfolio {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+
+/* Desktop screens */
+@media (min-width: 1024px) {
+    #portfolio {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
     </style>
 </head>
 
@@ -200,7 +257,7 @@ footer {
         <p>Computer Information Systems Student | Technology & Business Enthusiast</p>
     </header>
 
-    <nav>
+    <nav class="flex flex-wrap items-center justify-center gap-4 bg-[#111111] p-4"></nav>
         <a href="#about">About</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact</a>
@@ -247,14 +304,14 @@ footer {
             </article>
         </section>
 
-        <section id="contact">
+        
+<section id="contact" class="rounded-xl bg-white p-6 md:p-8">
+
     <h2>Contact Me</h2>
 
     <form>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
-
-        <br><br>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
